@@ -6,8 +6,6 @@ from Melodie import NetworkAgent
 if TYPE_CHECKING:
     from source.scenario import CovidScenario
     from Melodie import AgentList
-    from source.grid import CovidSpot
-    from source.grid import CovidGrid
 
 
 class CovidAgent(NetworkAgent):
@@ -20,7 +18,7 @@ class CovidAgent(NetworkAgent):
         self.health_state: int = 0
         self.age_group: int = 0
 
-    def infection(self, agents: "AgentList[CovidNetworkAgent]"):
+    def infection(self, agents: "AgentList[CovidAgent]"):
         neighbors = self.network.get_neighbors(self)
         for neighbor_category, neighbor_id in neighbors:
             neighbor_agent: "CovidAgent" = agents.get_agent(neighbor_id)
